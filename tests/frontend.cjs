@@ -80,7 +80,21 @@ async function checkStudioAtmosphere(page){
   assert.equal(await reduced.locator('.hero').getAttribute('data-motion'),'paused','Reduced-motion preference starts with the hand still');await reduced.close();
   const reducedStudio=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});await reducedStudio.goto(base+'/studio.html',{waitUntil:'networkidle'});await reducedStudio.waitForFunction(()=>window.atelier);assert.equal(await reducedStudio.locator('[data-studio]').getAttribute('data-atmosphere'),'paused');assert(await reducedStudio.locator('#studio-motion').isDisabled());assert.equal(await reducedStudio.locator('.studio-scenery').evaluate(el=>getComputedStyle(el).animationName),'none');await reducedStudio.screenshot({path:path.join(output,'studio-reduced-motion.png')});await reducedStudio.close();
   const additionalViewports=[];
-  for(const [width,height] of [[320,740],[768,1024]]){const narrow=await browser.newPage({viewport:{width,height}});await narrow.goto(base+'/index.html',{waitUntil:'networkidle'});assert(await narrow.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Landing fits width '+width);assert(await narrow.getByRole('link',{name:'Enter the atelier',exact:true}).first().isVisible());await narrow.screenshot({path:path.join(output,'landing-'+width+'.png')});additionalViewports.push({width,height,overflow:false});await narrow.close();}
+  for(const [width,height] of [[320,740],[768,1024],[1348,868]]){
+   const narrow=await browser.newPage({viewport:{width,height}});
+   await narrow.goto(base+'/index.html',{waitUntil:'networkidle'});
+   assert(await narrow.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Landing fits width '+width);
+   assert(await narrow.getByRole('link',{name:'Enter the atelier',exact:true}).first().isVisible());
+   if(width>600){
+    await narrow.waitForSelector('.muse-rig');
+    assert(await narrow.evaluate(()=>{
+     const art=document.querySelector('.hero-muse'),hero=document.querySelector('.hero').getBoundingClientRect(),image=art.querySelector('svg').getBoundingClientRect();
+     return Math.abs(art.getBoundingClientRect().bottom-Math.min(hero.bottom,image.bottom))<1&&getComputedStyle(art).maskImage.includes('linear-gradient');
+    }),'Portrait fade must finish at the first image or hero boundary, width '+width);
+   }
+   await narrow.screenshot({path:path.join(output,'landing-'+width+'.png')});
+   additionalViewports.push({width,height,overflow:false});await narrow.close();
+  }
   const missing=await browser.newPage();const missingErrors=[];missing.on('pageerror',error=>missingErrors.push(error.message));await missing.route('**/portrait-blue*.webp',route=>route.abort());await missing.goto(base+'/index.html');const missingTrigger=missing.locator('.gallery-button').nth(1);await missingTrigger.scrollIntoViewIfNeeded();await missing.getByText('Painting unavailable — please reload.',{exact:true}).waitFor();await missingTrigger.click();await missing.waitForFunction(()=>document.querySelector('#painting-viewer').open);await missing.locator('#painting-viewer img').evaluate(el=>el.decode());assert.deepEqual(missingErrors,[],'A missing thumbnail must retain a working full-image viewer');await missing.close();
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
   const report={scope:(process.env.FRONTEND_URL?'Configured frontend URL inspection':'Production dist build inspection')+'; desktop1440x1000, mobile390x844 Chrome/touch emulation, not physical phones',landingScriptBytes:scriptBytes,performanceSample,motionPositions,additionalViewports,checks:['Deferred studio/model loading','Live HTML headline','Six real exports decoded with six full-image viewers','Colour/pencil gallery filters','Native gallery dialog keyboard close and focus restoration','Animation pause/resume and offscreen suspension','Real CSS hand rest/maximum screenshots with stationary body','Reduced motion','Working landing-to-studio CTA','Recommended/background defaults','Studio scenery with keyboard atmosphere pause/resume and offscreen suspension','Studio reduced-motion disables decorative animation','Desktop/mobile/research routes without overflow','320px mobile and768px tablet compositions','Missing-thumbnail recovery retains full-image viewer','Creator footer'],errors,failures};

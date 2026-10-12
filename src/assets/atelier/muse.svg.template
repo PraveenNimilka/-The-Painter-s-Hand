@@ -1,8 +1,6 @@
 <svg class="muse-rig" viewBox="0 0 1024 1536" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <!-- Independently generated transparent components, never clipped from the old character. -->
-  <defs><clipPath id="muse-sleeve-front"><path d="M300 782 L520 1002 L520 1100 L300 1100Z"/></clipPath></defs>
   <image class="muse-body" width="1024" height="1536" href="{{BODY_URL}}"/>
-  <g class="muse-arm"><g transform="rotate(3.5 434 916)"><image x="348.5" y="355.5" width="486.4" height="729.6" href="{{FOREARM_URL}}"/></g></g>
-  <!-- The newly repainted cloth overlaps the elbow to hide the rounded rig root. -->
-  <image width="1024" height="1536" href="{{BODY_URL}}" clip-path="url(#muse-sleeve-front)"/>
+  <!-- Cuff, skin, fingers and brush are painted as one continuous moving layer. -->
+  <g class="muse-arm"><g transform="rotate(7 434 916)"><image x="120.8" y="449.1" width="742.4" height="742.4" href="{{FOREARM_URL}}"/></g></g>
 </svg>

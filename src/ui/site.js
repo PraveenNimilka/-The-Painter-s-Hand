@@ -1,6 +1,6 @@
 import museMarkup from '../assets/atelier/muse.svg.template?raw';
 import bodyURL from '../assets/atelier/muse-body-v3.webp?url';
-import forearmURL from '../assets/atelier/muse-arm-v3.webp?url';
+import forearmURL from '../assets/atelier/muse-arm-cuff-v4.webp?url';
 import '../assets/atelier/muse-animation.css';
 
 const hero=document.querySelector('.hero');

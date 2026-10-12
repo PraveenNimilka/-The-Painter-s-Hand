@@ -1,6 +1,11 @@
 /* Preserve the original exhibition and desktop hero. On phones only, give the
    existing heading, centered muse and actions separate rows so the hand stays
    visible and the copy cannot cover it. Specificity avoids bundle-order issues. */
+/* Fade within the visible hero, rather than below its clipped bottom edge. The
+   portrait keeps its original width, top position and image proportions. */
+body[data-page="landing"] .hero-muse{height:min(calc(100% - 210px),clamp(630px,67.5vw,975px));aspect-ratio:auto;overflow:hidden;mask-image:linear-gradient(to bottom,#000 calc(100% - 120px),transparent 100%)}
+body[data-page="landing"] .hero-muse>svg,body[data-page="landing"] .hero-muse>img{width:100%;height:auto}
+@media(min-width:601px) and (max-width:900px){body[data-page="landing"] .hero-muse{height:min(calc(100% - 230px),735px)}}
 @media(max-width:600px){
  body[data-page="landing"] .hero{height:auto;min-height:0;padding-bottom:24px}
  body[data-page="landing"] .hero-heading{position:relative;inset:auto;margin:28px 20px 0;text-align:center}
