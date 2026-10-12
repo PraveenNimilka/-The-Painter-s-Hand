@@ -1,24 +1,20 @@
 import museMarkup from '../assets/atelier/muse.svg.template?raw';
-import museURL from '../assets/atelier/muse.webp?url';
+import bodyURL from '../assets/atelier/muse-body-v3.webp?url';
+import forearmURL from '../assets/atelier/muse-arm-v3.webp?url';
 import '../assets/atelier/muse-animation.css';
 
-const hero=document.querySelector('.hero'),motionButton=document.querySelector('#motion-toggle');
+const hero=document.querySelector('.hero');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-let userPaused=reduced.matches,heroVisible=true;
+let heroVisible=true;
 const muse=document.querySelector('#hero-muse');
-if(muse)muse.innerHTML=museMarkup.replaceAll('{{MUSE_URL}}',museURL);
+if(muse)muse.innerHTML=museMarkup.replaceAll('{{BODY_URL}}',bodyURL).replaceAll('{{FOREARM_URL}}',forearmURL);
 function updateMotion(){
   if(!hero)return;
-  const paused=userPaused||reduced.matches||!heroVisible||document.hidden;
+  const paused=reduced.matches||!heroVisible||document.hidden;
   hero.dataset.motion=paused?'paused':'playing';
-  motionButton.textContent=userPaused?'Play motion':'Pause motion';
-  motionButton.setAttribute('aria-pressed',String(userPaused));
-  motionButton.disabled=reduced.matches;
-  motionButton.title=reduced.matches?'Motion disabled by your reduced-motion preference':'';
 }
-motionButton?.addEventListener('click',()=>{userPaused=!userPaused;updateMotion();});
 document.addEventListener('visibilitychange',updateMotion);
-reduced.addEventListener('change',()=>{userPaused=reduced.matches;updateMotion();});
+reduced.addEventListener('change',updateMotion);
 if(hero)new IntersectionObserver(([entry])=>{heroVisible=entry.isIntersecting;updateMotion();},{threshold:.05}).observe(hero);
 updateMotion();
 

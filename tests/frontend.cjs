@@ -36,17 +36,17 @@ async function checkStudioAtmosphere(page){
   await page.evaluate(()=>window.scrollTo(0,0));await page.waitForFunction(()=>document.querySelector('.hero').dataset.motion==='playing');
   await page.locator('#hero-muse svg').waitFor();
   assert.equal(await page.locator('.hero').getAttribute('data-motion'),'playing');
-  await page.click('#motion-toggle');assert.equal(await page.locator('.hero').getAttribute('data-motion'),'paused');
+  assert.equal(await page.locator('#motion-toggle').count(),0,'Landing artwork plays automatically without a motion control');
   // Freeze the real CSS animation at both the rest and halfway positions.
   const motionPositions=[];
-  for(const [name,time] of [['rest',0],['maximum',4000]]){
-   await page.evaluate(time=>{for(const selector of ['.muse-arm','.muse-brush'])for(const animation of document.querySelector(selector).getAnimations()){animation.pause();animation.currentTime=time;}},time);
-   motionPositions.push(await page.evaluate(()=>({arm:getComputedStyle(document.querySelector('.muse-arm')).transform,body:getComputedStyle(document.querySelector('#hero-muse svg > use[mask]')).transform})));
+  for(const [name,time] of [['rest',0],['maximum',1820]]){
+   await page.evaluate(time=>{for(const animation of document.querySelector('.muse-arm').getAnimations()){animation.pause();animation.currentTime=time;}},time);
+   motionPositions.push(await page.evaluate(()=>({arm:getComputedStyle(document.querySelector('.muse-arm')).transform,body:getComputedStyle(document.querySelector('.muse-body')).transform})));
    await page.screenshot({path:path.join(output,'hero-'+name+'.png')});
   }
-  assert.notEqual(motionPositions[0].arm,motionPositions[1].arm,'The arm must actually articulate');assert.equal(motionPositions[0].body,motionPositions[1].body,'The body remains stationary');
-  await page.evaluate(()=>{for(const selector of ['.muse-arm','.muse-brush'])for(const animation of document.querySelector(selector).getAnimations())animation.play();});
-  await page.click('#motion-toggle');assert.equal(await page.locator('.hero').getAttribute('data-motion'),'playing');
+  assert.notEqual(motionPositions[0].arm,motionPositions[1].arm,'The painting forearm must visibly articulate');assert.equal(motionPositions[0].body,motionPositions[1].body,'The original body placement remains stationary');
+  await page.evaluate(()=>{for(const animation of document.querySelector('.muse-arm').getAnimations())animation.play();});
+  assert.equal(await page.locator('.hero').getAttribute('data-motion'),'playing');
   await page.locator('footer').scrollIntoViewIfNeeded();
   await page.waitForFunction(()=>document.querySelector('.hero').dataset.motion==='paused');
   const first=page.locator('.gallery-button').first();await first.focus();await page.keyboard.press('Enter');
@@ -71,7 +71,7 @@ async function checkStudioAtmosphere(page){
   for(const [name,file] of [['landing','index.html'],['studio','studio.html'],['research','research.html']]){
    await mobile.goto(base+'/'+file,{waitUntil:'networkidle'});
    if(name==='studio'){await mobile.waitForFunction(()=>window.atelier);await checkStudioAtmosphere(mobile);}
-   if(name==='landing'){for(const image of await mobile.locator('.gallery-button img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(el=>el.decode());}await mobile.locator('.gallery-track').evaluate(el=>el.scrollLeft=0);await mobile.locator('.exhibition').screenshot({path:path.join(output,'gallery-mobile.png')});}
+   if(name==='landing'){assert(await mobile.evaluate(()=>{const art=document.querySelector('.hero-muse').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),title=document.querySelector('.hero-heading').getBoundingClientRect();return title.bottom<=art.top+1&&art.bottom<=copy.top+1;}),'Mobile title, original centered character and actions occupy separate rows');for(const image of await mobile.locator('.gallery-button img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(el=>el.decode());}await mobile.locator('.gallery-track').evaluate(el=>el.scrollLeft=0);await mobile.locator('.exhibition').screenshot({path:path.join(output,'gallery-mobile.png')});}
    await mobile.evaluate(()=>window.scrollTo(0,0));
    assert(await mobile.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),name+' must not overflow the mobile viewport');
    await mobile.screenshot({path:path.join(output,'after-'+(name==='landing'?'mobile':name+'-mobile')+'.png'),fullPage:true});

@@ -1,0 +1,26 @@
+/* Preserve the original exhibition and desktop hero. On phones only, give the
+   existing heading, centered muse and actions separate rows so the hand stays
+   visible and the copy cannot cover it. Specificity avoids bundle-order issues. */
+@media(max-width:600px){
+ body[data-page="landing"] .hero{height:auto;min-height:0;padding-bottom:24px}
+ body[data-page="landing"] .hero-heading{position:relative;inset:auto;margin:28px 20px 0;text-align:center}
+ body[data-page="landing"] .hero-heading span:first-child{font-size:10.8vw;line-height:1.15}
+ body[data-page="landing"] .hero-heading span:last-child{font-size:25vw;line-height:.95;margin-top:3px}
+ body[data-page="landing"] .hero-muse{position:relative;inset:auto;transform:none;width:min(94vw,390px);height:clamp(305px,90vw,380px);aspect-ratio:auto;margin:4px auto 0;overflow:hidden;mask-image:linear-gradient(#000 76%,transparent 100%)}
+ body[data-page="landing"] .hero-muse>svg,body[data-page="landing"] .hero-muse>img{display:block;width:100%;height:auto}
+ body[data-page="landing"] .hero-copy{position:relative;inset:auto;padding:13px 24px 20px;max-width:none;background:none;text-align:center}
+ body[data-page="landing"] .hero-copy .folio{font-size:8px;letter-spacing:.15em}
+ body[data-page="landing"] .hero-copy p{font-size:14px;line-height:1.75;max-width:330px;margin:14px auto 22px}
+ body[data-page="landing"] .hero-copy .oval-link{width:min(100%,285px);min-width:0;min-height:58px;padding:16px 22px}
+ body[data-page="landing"] .hero-copy .secondary-link{margin:18px auto 0;font-size:11px}
+ body[data-page="landing"] .hero-bottom{position:relative;inset:auto;margin:12px 24px 0;padding-top:17px;border-top:1px solid #e5cc9130;min-height:35px}
+ body[data-page="landing"] .site-nav{padding:0 18px;gap:10px}
+ body[data-page="landing"] .site-brand{font-size:18px;gap:8px;white-space:nowrap}
+ body[data-page="landing"] .nav-links{gap:16px}
+}
+@media(max-width:370px){
+ body[data-page="landing"] .site-brand{font-size:16px}
+ body[data-page="landing"] .site-seal{width:26px;height:26px;flex-shrink:0}
+ body[data-page="landing"] .nav-links{gap:11px;font-size:10px}
+ body[data-page="landing"] .hero-copy p{font-size:13px}
+}

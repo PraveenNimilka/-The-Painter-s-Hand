@@ -1,7 +1,5 @@
-/* Decorative articulation from the supplied static muse. Body remains stationary. */
-.muse-arm { transform-box: view-box; transform-origin: 434px 916px; animation: atelier-arm 8s ease-in-out infinite; }
-.muse-brush { transform-box: view-box; transform-origin: 693px 649px; animation: atelier-brush 8s ease-in-out infinite; }
-@keyframes atelier-arm { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-.28deg); } }
-@keyframes atelier-brush { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(.09deg); } }
-.muse-collage.motion-paused .muse-arm, .muse-collage.motion-paused .muse-brush { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .muse-arm, .muse-brush { animation: none; } }
+/* Matching forearm pivots at the original sleeve; face/body stay in place. */
+.muse-arm{transform-box:view-box;transform-origin:434px 916px;animation:painter-gesture 6.5s cubic-bezier(.45,0,.55,1) infinite;will-change:transform}
+@keyframes painter-gesture{0%,100%{transform:rotate(0deg)}28%{transform:rotate(-4deg)}57%{transform:rotate(3deg)}78%{transform:rotate(1deg)}}
+.hero[data-motion="paused"] .muse-arm{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.muse-arm{animation:none!important;will-change:auto}}

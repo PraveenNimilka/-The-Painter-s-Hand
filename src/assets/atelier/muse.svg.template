@@ -1,20 +1,8 @@
-<svg class="muse-collage" viewBox="0 0 1024 1536" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-  <defs>
-    <image id="atelier-muse-source" width="1024" height="1536" href="{{MUSE_URL}}"/>
-    <path id="atelier-arm-outline" d="M 430 970 C 431 937 428 871 439 836 C 484 823 531 798 550 758 C 561 731 559 698 580 674 C 611 640 653 636 703 636 C 717 644 721 659 710 670 C 723 681 720 697 704 704 C 714 718 703 736 692 737 C 698 752 682 768 667 773 C 645 790 632 814 607 835 C 557 879 490 936 430 970 Z"/>
-    <path id="atelier-brush-outline" d="M 463 777 L 553 721 L 558 729 L 469 787 Z M 697 642 L 811 564 C 823 549 839 538 860 532 C 852 552 839 567 823 575 L 706 650 Z"/>
-    <mask id="atelier-stationary-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1536">
-      <rect width="1024" height="1536" fill="white"/>
-      <use href="#atelier-arm-outline" fill="black"/><use href="#atelier-brush-outline" fill="black"/>
-    </mask>
-    <clipPath id="atelier-arm-clip"><use href="#atelier-arm-outline"/></clipPath>
-    <clipPath id="atelier-brush-clip"><use href="#atelier-brush-outline"/></clipPath>
-    <clipPath id="atelier-cuff-clip"><path d="M 409 828 C 419 833 428 836 443 836 L 429 974 C 418 979 408 982 399 982 Z"/></clipPath>
-  </defs>
-  <use href="#atelier-muse-source" mask="url(#atelier-stationary-mask)"/>
-  <g class="muse-arm">
-    <use href="#atelier-muse-source" clip-path="url(#atelier-arm-clip)"/>
-    <g class="muse-brush"><use href="#atelier-muse-source" clip-path="url(#atelier-brush-clip)"/></g>
-  </g>
-  <use href="#atelier-muse-source" clip-path="url(#atelier-cuff-clip)"/>
+<svg class="muse-rig" viewBox="0 0 1024 1536" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <!-- Independently generated transparent components, never clipped from the old character. -->
+  <defs><clipPath id="muse-sleeve-front"><path d="M300 782 L520 1002 L520 1100 L300 1100Z"/></clipPath></defs>
+  <image class="muse-body" width="1024" height="1536" href="{{BODY_URL}}"/>
+  <g class="muse-arm"><g transform="rotate(3.5 434 916)"><image x="348.5" y="355.5" width="486.4" height="729.6" href="{{FOREARM_URL}}"/></g></g>
+  <!-- The newly repainted cloth overlaps the elbow to hide the rounded rig root. -->
+  <image width="1024" height="1536" href="{{BODY_URL}}" clip-path="url(#muse-sleeve-front)"/>
 </svg>

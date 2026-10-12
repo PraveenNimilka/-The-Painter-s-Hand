@@ -8,6 +8,7 @@
 <meta property="og:title" content="The Painter’s Hand"><meta property="og:description" content="An offline studio for reference-guided paintings, pencil drawings, and recorded marks."><meta property="og:type" content="website"><meta property="og:image" content="./artwork/evening-light.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%2330231d'/%3E%3Ctext x='24' y='34' text-anchor='middle' font-family='serif' font-style='italic' font-size='36' fill='%23e5cc91'%3Eh%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="./src/ui/site.css">
+<link rel="stylesheet" href="./src/ui/landing-motion.css">
 </head><body data-page="landing"><div id="landing" data-offline-view="landing">
 <a class="skip-link" href="#paintings">Skip to paintings</a><main>
 <section class="hero" aria-label="Welcome to the atelier">
@@ -16,7 +17,7 @@
 <h1 class="hero-heading"><span>The Painter’s</span><span>Hand</span></h1>
 <div class="hero-muse" id="hero-muse" aria-hidden="true"><img src="./src/assets/atelier/muse.webp" width="1024" height="1536" alt="" fetchpriority="high"></div>
 <div class="hero-copy"><span class="folio">A reference. A different way of seeing.</span><p>Turn your reference into expressive pencil drawings and colour paintings. Follow the work, one recorded stroke at a time.</p><a class="oval-link" href="./studio.html">Enter the atelier <span aria-hidden="true">↗</span></a><a class="secondary-link" href="#paintings">Explore the paintings <span aria-hidden="true">↓</span></a></div>
-<p class="hero-aside">Between observation<br>and interpretation.</p><div class="hero-bottom"><span>ARS · LVMEN · MANVS<br>Decorative atelier illustration</span><button id="motion-toggle" class="motion-button" type="button" aria-pressed="false">Pause motion</button></div>
+<p class="hero-aside">Between observation<br>and interpretation.</p><div class="hero-bottom"><span>ARS · LVMEN · MANVS<br>Decorative atelier illustration</span></div>
 </section>
 <section class="exhibition" id="paintings" aria-labelledby="gallery-heading"><div class="section-head"><div><span class="folio">I · From the working studio</span><h2 id="gallery-heading">Room for<br><i>interpretation.</i></h2></div><p>Six studies made with the tool. Portraits, pencil, and colour: different ways of observing, with room for the unfinished.</p></div>
 <div class="gallery-controls"><div role="group" aria-label="Filter the studies"><button type="button" data-gallery-filter="all" aria-pressed="true">All studies</button><button type="button" data-gallery-filter="colour" aria-pressed="false">Colour</button><button type="button" data-gallery-filter="graphite" aria-pressed="false">Pencil</button></div><span id="gallery-count" role="status" aria-live="polite">6 studies</span></div>
