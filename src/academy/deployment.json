@@ -1,0 +1,23 @@
+{
+  "format": "painters-hand-recommendation-v1",
+  "routes": {
+    "leonardo-colour": "studio",
+    "leonardo-graphite": "studio",
+    "durer-colour": "studio",
+    "durer-graphite": "academy",
+    "rembrandt-colour": "studio",
+    "rembrandt-graphite": "studio"
+  },
+  "academy_checkpoint_sha256": "f2ef0743d81e1f67cf806aa8d030a08a7e4c8d9a20757b6f7b8f346a63bb4b84",
+  "selected_episode": 100000,
+  "basis": "Actual Canvas validation and previously inspected portrait regression audit; not independent identity or historical-style validation",
+  "durer_pencil_validation": {
+    "intentGain": 0.548765821397535,
+    "focalGain": 0.7006861200419359
+  },
+  "durer_pencil_regression": {
+    "intentGain": 0.2955963896993289,
+    "focalGain": 0.5898882956881848
+  },
+  "limits": "Only Durer pencil is recommended from the new actor; other modes retain the preserved Studio routes. Explicit Studio and Expressive study stay selectable."
+}

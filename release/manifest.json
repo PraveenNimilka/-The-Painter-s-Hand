@@ -1,0 +1,120 @@
+{
+  "created_utc": "2026-10-11T22:21:33.996156+00:00",
+  "status": "verified experimental delivery; full quality gate failed",
+  "recommended_routes_changed": false,
+  "main_selected_rl_episode": 0,
+  "selected_canvas_calibration_epoch": 12,
+  "files": [
+    {
+      "path": "release/The-Painters-Hand.html",
+      "bytes": 62829201,
+      "sha256": "94af48ba855813ee5f35e9f51a148a4017b8d803e536bbd2cf7a7f666cac7374"
+    },
+    {
+      "path": "src/visual/checkpoint.json",
+      "bytes": 51844739,
+      "sha256": "42ba703471ae1f4df74fcf86996f5741a5f6c7246c637a9a1fa934e486af8215"
+    },
+    {
+      "path": "release/The-Painters-Hand-visual-source-20261012.zip",
+      "bytes": 619229454,
+      "sha256": "0cf7618ef0d698d5fd02eb54d16ffdf39ee31efd0ec601f0793b1aaa0751d3e5"
+    },
+    {
+      "path": "release/source-inventory.json",
+      "bytes": 1414878,
+      "sha256": "11a724edb15b88d11bb9926bc33c64973c69ef83b5f652dd384fd0761ca32f2e"
+    },
+    {
+      "path": "training/visual/FINAL-REPORT.md",
+      "bytes": 17556,
+      "sha256": "a3a4e3f75828b5b25f7379bc0deb6b0d6487ed45350149597511d3d21fb15be8"
+    },
+    {
+      "path": "training/visual/evidence-summary.json",
+      "bytes": 127124,
+      "sha256": "3f7fd74f28de3906f4421a0fee349be113622867ced3bbbdbb886a569ecfd09b"
+    },
+    {
+      "path": "release/verification.json",
+      "bytes": 1515,
+      "sha256": "cbcb430256886e830766a705c96171b66ba2476d378201688d0b8225d12518a3"
+    },
+    {
+      "path": "release/cleanup/verification.json",
+      "bytes": 1765,
+      "sha256": "486f535cd0af05b87abdae49a0924c7911662e55d9c25acf3c1e74cc406aca17"
+    },
+    {
+      "path": "docs/CLEANUP.md",
+      "bytes": 4622,
+      "sha256": "ba3ff15f2764f7874afaf025dfd98ed5cf9902c6f576b63b859b04346441d862"
+    },
+    {
+      "path": "release/The-Painters-Hand-cleanup-20261012.zip",
+      "bytes": 53326,
+      "sha256": "9c9b07cce15cc916d3371025bffb47e1e30d0318590252e54883fa40a2f5d776"
+    },
+    {
+      "path": "release/The-Painters-Hand-frontend-source-20261012.zip",
+      "bytes": 62804605,
+      "sha256": "83b9d123164d21bd62db4291345c1dd255163b531cee8ca5d57d1183ea37b5b0"
+    },
+    {
+      "path": "release/The-Painters-Hand-hosted-20261012.zip",
+      "bytes": 44876537,
+      "sha256": "1059afeff047d8e0d0243c771899c2b6aa2dce70c6cce76c116730f3c2e58f29"
+    },
+    {
+      "path": "docs/FRONTEND-RELEASE.md",
+      "bytes": 6684,
+      "sha256": "cb2f64617ddcf92fd26c4054141c9a2405f29aaff879ca9a2ab482cb777639ff"
+    },
+    {
+      "path": "release/The-Painters-Hand-frontend-source-studio-redesign-20261012.zip",
+      "bytes": 83150895,
+      "sha256": "d7952ac8b079cd1638046ded00d7470545fc6d67963b155664b25f92c67eedf8"
+    },
+    {
+      "path": "release/The-Painters-Hand-hosted-studio-redesign-20261012.zip",
+      "bytes": 46060458,
+      "sha256": "f2d78ee4ebd85b1c461f54c1c90928bbf220ecbd606072f5cc7d44a520435f35"
+    },
+    {
+      "path": "docs/STUDIO-REDESIGN.md",
+      "bytes": 5697,
+      "sha256": "2b5b60e9faafec1775a4479e5b385876e95c75c97b36b43c889fcadac66298a9"
+    },
+    {
+      "path": "docs/GALLERY-STUDIES.json",
+      "bytes": 6811,
+      "sha256": "410f5b9d693f92dafe56fc99abf3cf8a7515c562d5222abf17209d5a49373e0c"
+    }
+  ],
+  "cleanup": {
+    "date": "2026-10-12",
+    "report": "docs/CLEANUP.md",
+    "verification": "release/cleanup/verification.json",
+    "source_delta_zip": "The-Painters-Hand-cleanup-20261012.zip",
+    "original_source_archive_preserved": true,
+    "training_assets_unchanged": true
+  },
+  "frontend": {
+    "created_utc": "2026-10-12T01:52:37.367179+00:00",
+    "report": "docs/FRONTEND-RELEASE.md",
+    "evidence": "release/frontend/",
+    "model_assets_changed": false,
+    "training_restarted": false,
+    "deployment_performed": false,
+    "domain_configured": false,
+    "source_package_scope": "Runtime, bundled models, frontend/build source, browser tests and frontend evidence. Training corpus/experiment evidence remain in the original source handoff and local repository."
+  },
+  "studio_redesign": {
+    "report": "docs/STUDIO-REDESIGN.md",
+    "evidence": "release/studio-redesign/",
+    "gallery_manifest": "docs/GALLERY-STUDIES.json",
+    "gallery_count": 6,
+    "model_assets_changed": false,
+    "training_restarted": false
+  }
+}

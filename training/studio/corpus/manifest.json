@@ -1,0 +1,176 @@
+{
+  "schema": "painters-hand-corpus-v1",
+  "works": [
+    {
+      "artist": "leonardo",
+      "title": "Mona Lisa",
+      "uploaded_name": "01-1000698307.jpg",
+      "source_sha256": "e56f4accac65200b86209473233f313667dc2e2f35b1c866dcdca3200dc69829",
+      "crops": 11,
+      "key": "archive-0",
+      "split": "train",
+      "origin": "user-supplied recovered crop archive",
+      "rights": "user-supplied; external license not independently verified",
+      "medium": "oil painting",
+      "file": "training/reference-crops.npz"
+    },
+    {
+      "artist": "leonardo",
+      "title": "Virgin of the Rocks",
+      "uploaded_name": "02-1000698308.jpg",
+      "source_sha256": "3865cbcbb796667364f85cbf9d360eb79f2daad68c6194b89f69749b23772eb0",
+      "crops": 11,
+      "key": "archive-1",
+      "split": "train",
+      "origin": "user-supplied recovered crop archive",
+      "rights": "user-supplied; external license not independently verified",
+      "medium": "oil painting",
+      "file": "training/reference-crops.npz"
+    },
+    {
+      "artist": "leonardo",
+      "title": "Ginevra de Benci",
+      "uploaded_name": "03-1000698309.jpg",
+      "source_sha256": "a7b0e5968d0317403c44c905d09a162c032610aff91c34822112a9ccfb58f1c3",
+      "crops": 11,
+      "key": "archive-2",
+      "split": "test",
+      "origin": "user-supplied recovered crop archive",
+      "rights": "user-supplied; external license not independently verified",
+      "medium": "oil painting",
+      "file": "training/reference-crops.npz"
+    },
+    {
+      "artist": "durer",
+      "title": "Lot and His Daughters (reverse)",
+      "uploaded_name": "04-1000698310.jpg",
+      "source_sha256": "ac3a8e6e861c0f0edf284a1f009bde9b68b7c112a66c6c96947152f54879a2d8",
+      "crops": 11,
+      "key": "archive-3",
+      "split": "train",
+      "origin": "user-supplied recovered crop archive",
+      "rights": "user-supplied; external license not independently verified",
+      "medium": "oil painting",
+      "file": "training/reference-crops.npz"
+    },
+    {
+      "key": "met-437397",
+      "artist": "rembrandt",
+      "title": "Self-Portrait",
+      "medium": "Oil on canvas",
+      "split": "train",
+      "crops": 6,
+      "source": "https://www.metmuseum.org/art/collection/search/437397",
+      "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-16323-001.jpg",
+      "rights": "Met Open Access; API isPublicDomain=true",
+      "source_sha256": "35d038445b6e024a94a381f3b3f099cb6b6188597e48d0cd4a3fe40be4e48a08",
+      "metadata_file": "training\\studio\\corpus\\met-437397.json"
+    },
+    {
+      "key": "met-437394",
+      "artist": "rembrandt",
+      "title": "Aristotle with a Bust of Homer",
+      "medium": "Oil on canvas",
+      "split": "test",
+      "crops": 6,
+      "source": "https://www.metmuseum.org/art/collection/search/437394",
+      "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-30758-001.jpg",
+      "rights": "Met Open Access; API isPublicDomain=true",
+      "source_sha256": "06e64703d92fed63c6238d15ed32d582792397b238458bf1893530eb8d91e3f4",
+      "metadata_file": "training\\studio\\corpus\\met-437394.json"
+    },
+    {
+      "key": "met-459214",
+      "artist": "durer",
+      "title": "Self-portrait, Study of a Hand and a Pillow (recto); Six Studies of Pillows (verso)",
+      "medium": "Pen and brown ink",
+      "split": "train",
+      "crops": 6,
+      "source": "https://www.metmuseum.org/art/collection/search/459214",
+      "image_url": "https://images.metmuseum.org/CRDImages/rl/web-large/DP282110.jpg",
+      "rights": "Met Open Access; API isPublicDomain=true",
+      "source_sha256": "55b421e9133299ddd334261307d7bc94d64d96d064e818a443fa35932530b3f0",
+      "metadata_file": "training\\studio\\corpus\\met-459214.json"
+    },
+    {
+      "key": "met-336222",
+      "artist": "durer",
+      "title": "Adam and Eve",
+      "medium": "Engraving",
+      "split": "test",
+      "crops": 6,
+      "source": "https://www.metmuseum.org/art/collection/search/336222",
+      "image_url": "https://images.metmuseum.org/CRDImages/dp/web-large/DP816026.jpg",
+      "rights": "Met Open Access; API isPublicDomain=true",
+      "source_sha256": "fdd76328c77a2f3b535c2b57ca3ee3ed738b122bd87e1fb854203f5ebc2c49b8",
+      "metadata_file": "training\\studio\\corpus\\met-336222.json"
+    }
+  ],
+  "descriptors": {
+    "leonardo": {
+      "value_quantiles": [
+        0.10383803921568628,
+        0.16108509803921567,
+        0.26147450980392156,
+        0.3623756862745098,
+        0.5692850980392157
+      ],
+      "palette": [
+        "#181b1d",
+        "#2c2825",
+        "#4a4137",
+        "#695945",
+        "#a28d6f"
+      ],
+      "train_works": [
+        "archive-0",
+        "archive-1"
+      ]
+    },
+    "durer": {
+      "value_quantiles": [
+        0.1851105882352941,
+        0.25775450980392156,
+        0.3096156862745098,
+        0.38575333333333334,
+        0.6015172549019608
+      ],
+      "palette": [
+        "#3d2d16",
+        "#4e431a",
+        "#5d4f23",
+        "#785f36",
+        "#af9670"
+      ],
+      "train_works": [
+        "archive-3",
+        "met-459214"
+      ]
+    },
+    "rembrandt": {
+      "value_quantiles": [
+        0.04944666666666667,
+        0.08398431372549019,
+        0.11437843137254901,
+        0.15677568627450977,
+        0.21029725490196083
+      ],
+      "palette": [
+        "#160904",
+        "#211206",
+        "#29190b",
+        "#372412",
+        "#483019"
+      ],
+      "train_works": [
+        "met-437397"
+      ]
+    }
+  },
+  "limits": [
+    "Small selected works; not representative artist corpora",
+    "Artwork tests separate from all training crops and palette statistics",
+    "No historical stroke sequences",
+    "Image attribution and preserved state may differ from original paint appearance"
+  ]
+}

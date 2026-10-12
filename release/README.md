@@ -1,0 +1,17 @@
+# Painter’s Hand — verified experimental handoff
+
+Open **The-Painters-Hand.html** directly in Chrome or Edge. It is self-contained and draws offline, including the bundled selected policy. No API key or model download is required. The default Recommended routes are preserved.
+
+The current file also includes the refined, animated studio and a six-work gallery with colour/pencil filters. Additional drawings are saved material-trial reconstructions with CC0 museum sources; they are not neural-policy showcases. Read `../docs/STUDIO-REDESIGN.md` and `../docs/GALLERY-STUDIES.json`. The new archives use the `studio-redesign-20261012` suffix; previous archives remain intact.
+
+The current file opens on the production exhibition landing page. **Enter the atelier** opens the real studio; Research opens the methods and limitations. The studio is mounted once and retained across local navigation. The separate hosted build is in `The-Painters-Hand-hosted-20261012.zip`; frontend runtime/build source is in `The-Painters-Hand-frontend-source-20261012.zip`. See `frontend/` for before/after desktop/mobile screenshots and verified browser reports, and `../docs/FRONTEND-RELEASE.md` for Vercel instructions. No deployment was performed and no domain is configured; previews remain non-indexable.
+
+For the new work, open studio options and select **Visual hand · experimental**. Strategies distinguish neural policy, policy with measured trials, greedy trials and direct stroke optimization. Optimization was the strongest measured reconstruction route; it is not learned artist creativity. Output consists of ordered painting paths. Native output dimensions, playback, PNG/SVG/JSON and offline worker operation were verified.
+
+The optional neural model has 9,712,482 inference parameters. Main PPO ran 4,952 attempted episodes, but selected_episode remained0. The delivered asset adds supervised actual-Canvas calibration at epoch 12. Mixed improvement and substantial failures remain. It has not passed the full quality gate and is not promoted to Recommended. Native thin-line detail and high-budget pencil completion failed. Original composition, comprehensive artist interpretation, reliable anatomy/textiles and measured physical material accuracy are not demonstrated.
+
+Read [the final report](../training/visual/FINAL-REPORT.md), [visual comparisons](../training/visual/report.html), [benchmarks](../training/visual/BENCHMARKS.md) and [reproduction instructions](../training/visual/README.md). The selected checkpoint is `../src/visual/checkpoint.json`. Baselines, failed runs, resume states and data remain intact in the local project.
+
+The source ZIP contains runtime/build source, selected and comparison weights, scripts, manifests, core-test assets, gallery images and reports. It excludes dependency installations, the large training image corpus/pyramids, teacher feature recordings and optimizer/resume tensors. A machine-readable inventory lists included hashes and omitted categories. Full training reproduction requires restoring rights-recorded images and rebasing manifest paths; generated teacher records can be recreated with the collector. Frozen main source snapshots are included. Current trainer repairs intentionally prevent resuming the original source signature unchanged.
+
+No training or paid compute remains active for this delivery. The original cutoff and deadline do not authorize a new run. Preserve the best verified app and use the next native-detail/region-observation experiment from the report before scaling training.

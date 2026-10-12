@@ -1,0 +1,20 @@
+{
+  "description": "Frozen before extended model promotion; studio.test.js source() fixture.",
+  "options": {
+    "engine": "studio-previous",
+    "budget": 64,
+    "detail": 70,
+    "shading": 80,
+    "fidelity": 25,
+    "interpretation": 80
+  },
+  "checkpoint_sha256": "e1749439ae5121074d803d89b63f68f1ea84beae9fdc5f7fd47ddd780aceb38a",
+  "modes": {
+    "leonardo-colour": "e25580bbc21a270a70b7659e47474315b3ef82d214d97e9bdfe6d50c67573840",
+    "leonardo-graphite": "151ffa514299f6f2a5b2cad9b6a53a61baf1ad9884e2eb491177949572ad3e4d",
+    "durer-colour": "b69b927e03c4d96a86cc81c838b652434e00729cc0a52b7a9c18da1d700bd4dc",
+    "durer-graphite": "fe98dd0bab5f5a29a1a318346036960b560438f9cfe296b9d047a4cf7d5fc8d9",
+    "rembrandt-colour": "bcec462871d7787d73a915e38df386b565ff37d95ca31adbb2bb8d6576ae7f11",
+    "rembrandt-graphite": "f4caeee88e5bc573d6f0ab8b67be91a07514c8eda87cd327ba0f4c1fbb61437a"
+  }
+}

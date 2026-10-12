@@ -1,0 +1,84 @@
+{
+  "status": "adopted validation-frozen mode choices after aggregate locked-test gate",
+  "routes": {
+    "leonardo-colour": "extended",
+    "leonardo-graphite": "previous",
+    "durer-colour": "extended",
+    "durer-graphite": "previous",
+    "rembrandt-colour": "previous",
+    "rembrandt-graphite": "previous"
+  },
+  "decisions": {
+    "leonardo-colour": {
+      "loss_reduction": 0.15804357713657413,
+      "focal_reduction": 0.14948530375879743,
+      "case_guard_passed": true,
+      "accepted": true
+    },
+    "leonardo-graphite": {
+      "loss_reduction": -0.008895523431630581,
+      "focal_reduction": -0.30725011474122965,
+      "case_guard_passed": false,
+      "accepted": false
+    },
+    "durer-colour": {
+      "loss_reduction": 0.1328018703100764,
+      "focal_reduction": 0.03483180048741086,
+      "case_guard_passed": true,
+      "accepted": true
+    },
+    "durer-graphite": {
+      "loss_reduction": 0.008012293991661479,
+      "focal_reduction": 0.038114642216991124,
+      "case_guard_passed": true,
+      "accepted": false
+    },
+    "rembrandt-colour": {
+      "loss_reduction": 0.09152515090086688,
+      "focal_reduction": -0.003882937915278717,
+      "case_guard_passed": false,
+      "accepted": false
+    },
+    "rembrandt-graphite": {
+      "loss_reduction": -0.09326988701764516,
+      "focal_reduction": -0.24813695321549112,
+      "case_guard_passed": false,
+      "accepted": false
+    }
+  },
+  "criteria": {
+    "minimum_mean_intent_gain": 0.01,
+    "minimum_mean_focal_gain": 0,
+    "maximum_case_intent_regression": 0.1,
+    "maximum_case_focal_regression": 0.25
+  },
+  "validation_people": [
+    "Christina Koch",
+    "Michael Collins",
+    "Peggy Whitson",
+    "Ronald McNair"
+  ],
+  "validation_report_sha256": "f92faa154748e503c07fa5637e50047e137342e9ce7b8fe0d0a22709b4dd2e22",
+  "validation_render_checkpoint_sha256": "619d37c83f2c26f21123c913a0030448f6ad753059f492c61d17dd4942adcb5a",
+  "extended_checkpoint_sha256": "dbd586055fd385e5bd4c06cee429283f0a939de7dec3bd0c213f266b7a128bae",
+  "previous_checkpoint_sha256": "e1749439ae5121074d803d89b63f68f1ea84beae9fdc5f7fd47ddd780aceb38a",
+  "budget": 5480,
+  "settings": {
+    "interpretation": 80,
+    "fidelity": 25,
+    "detail": 70,
+    "shading": 80,
+    "backdrop": "studio",
+    "selectedTool": "auto"
+  },
+  "adoption_gate_passed": true,
+  "proposed_routes": {
+    "leonardo-colour": "extended",
+    "leonardo-graphite": "previous",
+    "durer-colour": "extended",
+    "durer-graphite": "previous",
+    "rembrandt-colour": "previous",
+    "rembrandt-graphite": "previous"
+  },
+  "test_report_sha256": "faeac10d2588f4bb01c3bbad72945e798d6d2aa3775cbd9d83c0cc4d7b83a187"
+}

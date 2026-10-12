@@ -1,0 +1,46 @@
+{
+  "name": "the-painters-hand",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/seo.js",
+    "preview": "vite preview",
+    "test": "node --test tests/vision.test.js tests/learning.test.js tests/studio.test.js tests/studio-corpus.test.js tests/academy.test.js tests/hierarchy.test.js",
+    "train": "python3 training/train.py --episodes 1200 --steps 120 --eval-every 120 --test-seed-start 60011",
+    "test:learned": "node tests/learned-browser.cjs",
+    "test:soft": "node tests/soft-parity.cjs",
+    "test:browser": "node tests/browser.cjs && node tests/interactions.cjs",
+    "test:refactor": "node tests/refactor-check.cjs",
+    "standalone": "vite build --mode standalone && node scripts/standalone.js",
+    "test:frontend": "node tests/frontend.cjs",
+    "test:frontend-offline": "node tests/frontend-offline.cjs",
+    "test:standalone": "node tests/standalone.cjs && node tests/academy-standalone.cjs",
+    "test:studio": "node tests/studio-browser.cjs",
+    "test:academy": "node tests/academy-browser.cjs",
+    "test:recommended": "node tests/recommended-browser.cjs",
+    "test:academy-parity": "node tests/academy-parity.mjs && node tests/academy-export.mjs && node tests/academy-six.mjs",
+    "test:academy-canvas": "node tests/academy-evaluation.cjs",
+    "test:studio-photo": "node tests/studio-photo-evaluation.cjs",
+    "test:studio-expanded": "node tests/studio-expanded-evaluation.cjs",
+    "train:long": "python training/studio/train_long.py",
+    "train:resume": "python training/studio/train_long.py --resume",
+    "train:studio": "python training/studio/train.py --episodes 1800 --steps 96 --eval-every 150",
+    "test:detail": "node tests/detail-browser.cjs",
+    "test:detail-standalone": "node tests/detail-standalone.cjs",
+    "test:detail-parity": "node tests/detail-parity.mjs",
+    "test:hierarchy": "node tests/hierarchy-browser.cjs",
+    "test:hierarchy-parity": "node tests/hierarchy-parity.mjs",
+    "test:hierarchy-canvas": "node tests/hierarchy-evaluation.cjs",
+    "test:hierarchy-standalone": "node tests/hierarchy-standalone.cjs"
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "playwright": "^1.61.1",
+    "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": ">=22.16"
+  }
+}

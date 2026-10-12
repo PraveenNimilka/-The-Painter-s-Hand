@@ -1,0 +1,83 @@
+[
+  {
+    "name": "evening-light",
+    "source_sha256": "135481ed398c8b6383ed1c3742816bca05f39b2747dc4ba1b2bf0607d016c6e3",
+    "original_bytes": 960051,
+    "webp_bytes": 421044,
+    "width": 800,
+    "height": 960,
+    "mode": "RGBA",
+    "source": "Creator-supplied concept HTML",
+    "role": "creator-supplied actual tool export",
+    "engine": "not supplied",
+    "webp_sha256": "f6f50b811b3f34419f9774a7bb99eebb698521b56bcb2129d546fdba67774ee7",
+    "gallery_lossless": true,
+    "decoded_pixels_identical": true
+  },
+  {
+    "name": "landscape",
+    "source_sha256": "30f4b0bcf9239af27dfbd8b43e3f36f168803fe397bbc531e7492755f2dd6a24",
+    "original_bytes": 2565646,
+    "webp_bytes": 245792,
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "source": "Creator-supplied concept HTML",
+    "role": "decorative generated brand illustration",
+    "engine": null,
+    "webp_sha256": "95abd93349f732d720b4b5625f1357a6f6f55d4a386d174fb03d3d9b309ba8dc",
+    "gallery_lossless": false
+  },
+  {
+    "name": "muse",
+    "source_sha256": "a0bcc443f765adcea7783991f7452bbf956d05a062dd1b503391342db47272c1",
+    "original_bytes": 2635645,
+    "webp_bytes": 268886,
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "source": "Creator-supplied concept HTML",
+    "role": "decorative generated brand illustration",
+    "engine": null,
+    "webp_sha256": "405d577e746333722426e396c579db7584efafe14ccf0488f198dadf92b362e7",
+    "gallery_lossless": false
+  },
+  {
+    "name": "portrait-blue",
+    "source_sha256": "469b43462281bce3a3a9c802cc9aa6e45fefcad02fc57cd0707a8e703f850385",
+    "original_bytes": 916781,
+    "webp_bytes": 421432,
+    "width": 800,
+    "height": 960,
+    "mode": "RGBA",
+    "source": "Creator-supplied concept HTML",
+    "role": "creator-supplied actual tool export",
+    "engine": "not supplied",
+    "webp_sha256": "76c8d2b4e36247367bc31e1b6c0e104b99b174b8d49c23de22e4e8d653f891e4",
+    "gallery_lossless": true,
+    "decoded_pixels_identical": true
+  },
+  {
+    "name": "lavender-study",
+    "source_sha256": "e0c35a7cd8081bc608b3ac07e939ccce55ceeec1147f18d628181e030fcb4a97",
+    "original_bytes": 918118,
+    "webp_bytes": 412696,
+    "width": 800,
+    "height": 960,
+    "mode": "RGBA",
+    "source": "Creator-supplied concept HTML",
+    "role": "creator-supplied actual tool export",
+    "engine": "not supplied",
+    "webp_sha256": "a755b2fde68fe9c3ddcbda210da93b1ea9d28f0ba439a17074020d0904b399fd",
+    "gallery_lossless": true,
+    "decoded_pixels_identical": true
+  },
+  {
+    "name": "Bodoni Moda Latin variable font",
+    "source": "https://fonts.gstatic.com/s/bodonimoda/v28/aFTQ7PxzY382XsXX63LUYJSKSKg.woff2",
+    "upstream": "https://github.com/google/fonts/tree/main/ofl/bodonimoda",
+    "license": "SIL Open Font License 1.1; BodoniModa-OFL.txt",
+    "bytes": 46260,
+    "sha256": "c032219ef636f7b4932f7d1dc91bdab602c970f090770b546bea4effaab3463c"
+  }
+]

@@ -1,0 +1,17 @@
+{
+ "format":"painters-hand-digital-tool-design-v1",
+ "physical_accuracy":"Unmeasured vector-compatible digital approximations. No wet-fluid, spectral pigment, paint-height or true removal solver.",
+ "shared_controls":{"pressure":"Per-point footprint width","tilt":"Contact spread and bristle count","speed":"Reduced deposition at higher speed","loading":"Available opacity fraction","depletion":"Exponential reduction of contact width with travel","taper":"Pressure envelope; broad block-in and fine detail use different envelopes"},
+ "families":[
+  {"id":"point-graphite","material":"graphite","purpose":"Tapered construction, seams and selected focal lines","behavior":"Core ribbon with three sparse parallel strands","calibration":"Pressure ladder; curved hairline; repeated darkening"},
+  {"id":"side-graphite","material":"sidelead","purpose":"Broad quiet tonal modelling","behavior":"Four nested translucent bands and wider tilted contact","calibration":"Value ramp; overlapping modelling strokes"},
+  {"id":"chalk","material":"chalk","purpose":"Granular study tones and sparse lights","behavior":"Lower opacity core and parallel grain strands","calibration":"Chalk versus graphite at equal pressure"},
+  {"id":"ink","material":"ink","purpose":"Controlled observed contours and directional hatch","behavior":"Single tapered opaque ribbon","calibration":"Thin crossing lines and width taper"},
+  {"id":"opaque-filbert","material":"paint","purpose":"Block-in and controlled form modelling","behavior":"Filled tapered ribbon with high deposition","calibration":"Broad coverage and crisp/soft edge comparison"},
+  {"id":"glaze","material":"glaze","purpose":"Translucent transitions over existing marks","behavior":"Four nested low-opacity bands","calibration":"Two-colour layering order"},
+  {"id":"wash","material":"wash","purpose":"Dilute masses and quieter background","behavior":"Three broader translucent bands","calibration":"Wash versus glaze; no claim of fluid pooling"},
+  {"id":"dry-bristles","material":"drybrush","purpose":"Directional hair and textile accents","behavior":"Separated offset tapered bristles","calibration":"Direction, gaps and depletion; no random noise texture"},
+  {"id":"lift-highlight","material":"paint","purpose":"Paper-colour correction and selected highlights","behavior":"Paper-colour deposition through a recorded stroke","calibration":"Correction over dark paint; explicitly not physical pigment removal"}
+ ],
+ "historical_scope":"Artist plans are museum-informed authored interpretations. Modern graphite grades and knife-like highlights are adaptations. Finished artwork does not reveal original historical action sequences."
+}
