@@ -15,6 +15,7 @@
     "test:refactor": "node tests/refactor-check.cjs",
     "standalone": "vite build --mode standalone && node scripts/standalone.js",
     "test:frontend": "node tests/frontend.cjs",
+    "test:startup": "node tests/studio-startup.cjs",
     "test:frontend-offline": "node tests/frontend-offline.cjs",
     "test:standalone": "node tests/standalone.cjs && node tests/academy-standalone.cjs",
     "test:studio": "node tests/studio-browser.cjs",

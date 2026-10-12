@@ -15,11 +15,17 @@ import hierarchicalCheckpoint from '../hierarchy/checkpoint.json' with {type:'js
 import {recommendedEngine} from '../academy/recommendation.js';
 import {profiles} from '../studio/plan.js';
 import {tools as studioTools} from '../studio/tools.js';
-import visualCheckpoint from '../visual/checkpoint.json' with {type:'json'};
+import visualModelInfo from '../visual/model-info.json' with {type:'json'};
 import {highResolutionInput} from '../visual/source.js';
 import {compileVisual} from '../visual/painter.js';
 import {mountStudioPresence} from './studio-presence.js';
 let studioMounted=false;
+let visualCheckpoint=visualModelInfo,visualModelLoading;
+async function loadVisualModel(){
+ if(visualCheckpoint.layers)return visualCheckpoint;
+ visualModelLoading??=import('../visual/model.js').then(module=>visualCheckpoint=module.default).catch(error=>{visualModelLoading=null;throw error;});
+ return visualModelLoading;
+}
 export function mountStudio(){
 if(studioMounted)return window.atelier;
 studioMounted=true;
@@ -78,7 +84,7 @@ function update(){if(!document.querySelector('#progress'))return;const pct=Math.
 async function fileImage(file){if(!file||!file.type.startsWith('image/')){setMsg('Please choose an image file.');return;}const token=++loadVersion,url=URL.createObjectURL(file),image=new Image();
  try{image.src=url;await image.decode();if(token!==loadVersion){URL.revokeObjectURL(url);return;}if(photoURL)URL.revokeObjectURL(photoURL);photo=image;photoURL=url;focus=null;$('thumb').src=url;$('thumb').hidden=false;setMsg('Photo loaded · ready to draw');await compile();}catch{URL.revokeObjectURL(url);setMsg('Could not read this image. Try JPEG or PNG.');}
 }
-$('drop').onclick=()=>$('file').click();$('drop').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('file').click();}};$('file').onchange=e=>fileImage(e.target.files[0]);
+$('drop').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('file').click();}};$('file').onchange=e=>fileImage(e.target.files[0]);
 $('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('dragging');};$('drop').ondragleave=()=>$('drop').classList.remove('dragging');$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('dragging');fileImage(e.dataTransfer.files[0]);};
 $('sample').onclick=async()=>{try{await fileImage(await sampleImage());}catch{setMsg('Sample could not be loaded.');}};
 for(const id of ['detail','shading','fidelity','interpretation']){$(id).oninput=()=>{$(id+'Out').textContent=$(id).value+'%';};$(id).onchange=()=>photo&&compile();}
@@ -155,9 +161,14 @@ function exportReady(){if(compiling){setMsg('Wait for compilation to finish befo
 $('json').onclick=()=>{if(exportReady())download(exportJSON(player.strokes,artist,metadata),'painters-hand-'+artist+'-'+medium+'-strokes.json','application/json');};
 $('svg').onclick=()=>{if(exportReady())download(exportSVG(player.strokes,artist,metadata.canvas),'painters-hand-'+artist+'-'+medium+'.svg','image/svg+xml');};
 $('png').onclick=async()=>{if(!exportReady())return;const name='painters-hand-'+artist+'-'+medium+'.png';try{download(await exportPNG(player),name,'image/png');}catch(error){setMsg('PNG could not be saved: '+error.message);}};
-$('checkpoint').onclick=()=>download(JSON.stringify(selectedPolicy()),'painters-hand-'+(isStudio()?$('engine').value:$('finish').value)+'-policy.json','application/json');
+$('checkpoint').onclick=async()=>{try{if(effectiveEngine()==='visual'){setMsg('Loading the experimental policy for download…');await loadVisualModel();}download(JSON.stringify(selectedPolicy()),'painters-hand-'+(isStudio()?$('engine').value:$('finish').value)+'-policy.json','application/json');}catch{setMsg('The experimental policy could not load. Please try again.');}};
 async function compile(){if(!photo)return;const id=++generation;worker?.terminate();worker=null;compiling=true;player.compiling=true;player.reset();metadata={};comparisonReady=false;firstStroke=0;started=performance.now();$('create').disabled=true;$('compareToggle').checked=false;$('compareToggle').disabled=true;$('before').hidden=true;$('compareControl').hidden=true;$('divider').hidden=true;$('empty').hidden=true;$('empty').style.display='none';$('total').textContent='…';setMsg('Analyzing photograph locally…');
  try{input=fitImage(photo);if(effectiveEngine()==='visual'){input.native=highResolutionInput(photo,Number(resolutionSelect.value));player.resize(input.native.w,input.native.h);$('paper').style.aspectRatio=input.native.w+'/'+input.native.h;const rc=document.createElement('canvas');rc.width=input.native.w;rc.height=input.native.h;rc.getContext('2d').putImageData(new ImageData(input.native.rgba,input.native.w,input.native.h),0,0);$('reference').src=rc.toDataURL();}else{if(player.ctx.canvas.width!==800||player.ctx.canvas.height!==960)player.resize();$('paper').style.aspectRatio='800/960';$('reference').src=input.canvas.toDataURL();}}catch(error){compiling=false;player.compiling=false;$('create').disabled=false;setMsg('Could not analyze this photograph: '+error.message);return;}const settings=options();
+ if(settings.engine==='visual'&&settings.method==='visual'){
+  setMsg('Loading the experimental trained hand… The stroke optimizer works without this download.');
+  try{await loadVisualModel();}catch{if(id!==generation)return;compiling=false;player.compiling=false;$('create').disabled=false;setMsg('The experimental hand could not load. Try again, or choose Recommended hand or Stroke optimizer.');return;}
+  if(id!==generation)return;
+ }
  if($('localFace').checked){settings.detected=await Promise.race([detectLocalFace(photo,input.fit),new Promise(r=>setTimeout(()=>r(null),600))]);if(id!==generation)return;}
  const message=data=>{if(id!==generation)return;
   if(data.type==='analysis'){metadata.face=data.face;drawGuides();$('faceStatus').textContent=data.face?data.face.source+' · '+data.face.landmarks.length+' focal regions':'No face estimate · general image contours';}
@@ -173,6 +184,8 @@ syncMedium();update();
 window.atelier={player,get strokes(){return player.strokes;},get metadata(){return metadata;},get compiling(){return compiling;},get comparisonReady(){return comparisonReady;},get artist(){return artist;},get medium(){return medium;},compile,complete:()=>player.seek(player.strokes.length),exportJSON:()=>exportJSON(player.strokes,artist,metadata),exportSVG:()=>exportSVG(player.strokes,artist,metadata.canvas),paintStroke,primitives,get paper(){return PAPER;},get referenceVersion(){return loadVersion;}};
 window.paintersHand=window.atelier;
 mountStudioPresence(document.querySelector('[data-studio]'));
+setMsg('Choose a reference to begin.');
+if($('file').files.length)fileImage($('file').files[0]);
 return window.atelier;
 }
 // Hosted studio documents initialize immediately. The offline exhibition mounts
