@@ -76,6 +76,11 @@ async function showOfflineView(){
 addEventListener('hashchange',showOfflineView);
 showOfflineView();
 
-for(const image of document.querySelectorAll('.gallery-button img'))image.addEventListener('error',()=>{
-  const note=document.createElement('span');note.textContent='Painting unavailable — please reload.';image.replaceWith(note);
-});
+for(const image of document.querySelectorAll('.gallery-button img')){
+  const unavailable=()=>{
+    if(!image.isConnected)return;
+    const note=document.createElement('span');note.textContent='Painting unavailable — please reload.';image.replaceWith(note);
+  };
+  image.addEventListener('error',unavailable);
+  if(image.complete&&image.naturalWidth===0)unavailable();
+}
