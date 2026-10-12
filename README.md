@@ -1,5 +1,7 @@
 # The Painter’s Hand — research edition 0.6.0
 
+**Banana Hacks:** [Project write-up (under 500 words)](docs/BANANA-HACKS-SUBMISSION.md).
+
 **Studio refinement, 12 October 2026:** the studio now shares the exhibition’s painted scenery, muted teal, parchment controls and antique-gold canvas frame. Decorative motion has explicit pause and reduced-motion support. The gallery contains six actual exports/studies, including pencil, with filters and recorded provenance. See [studio refinement and verification](docs/STUDIO-REDESIGN.md) and [gallery provenance](docs/GALLERY-STUDIES.json).
 
 **Frontend release, 12 October 2026:** the application now opens as a classical exhibition, with a separate working [studio](studio.html) and [research page](research.html). Models, painting algorithms and Recommended defaults remain preserved. Read [build/deployment, verification and limitations](docs/FRONTEND-RELEASE.md). `npm run build` produces the Vercel-ready `dist` folder; `npm run standalone` produces a self-contained landing/studio/research file. Browser checks: `npm run test:frontend` and `npm run test:frontend-offline`.
